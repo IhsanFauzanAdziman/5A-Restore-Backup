@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # buat_arsip.sh - Membuat arsip .tar.gz berstempel waktu
-# Penanggung jawab : Anggota 2
+# Penanggung jawab : Ihsan Fauzan Adziman
 # Pemakaian        : ./scripts/buat_arsip.sh <sumber> <tujuan>
 # Exit status      : 0 sukses | 1 parameter salah | 2 sumber invalid
 #                    3 tujuan tidak dapat ditulis | 4 tar gagal
