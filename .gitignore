@@ -1,0 +1,26 @@
+# VM
+*.vdi
+*.ova
+*.vmdk
+
+# Arsip, data uji, dan keluaran sementara
+*.tar.gz
+data_uji/
+hasil_uji/
+tujuan_ro/
+tmp/
+logs/
+
+# Environment
+*.pem
+id_rsa*
+id_ed25519*
+!*.pub
+.env
+*.key
+
+# Berkas editor/OS
+*.swp
+*~
+.vscode/
+.DS_Store
