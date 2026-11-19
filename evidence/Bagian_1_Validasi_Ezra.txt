@@ -23,3 +23,29 @@ PENGUJIAN 3 - TUJUAN DI DALAM SUMBER
 2026-11-19 03:40:18 [ERROR] Tujuan tidak boleh berada di dalam sumber.
 Exit code: 5
 
+
+==================================
+PENGUJIAN TAMBAHAN - SUMBER TIDAK TERSEDIA
+==================================
+Perintah:
+bash scripts/validasi.sh ~/folder-tidak-ada ~/hasil-backup
+
+Hasil:
+Sumber tidak tersedia atau tidak terbaca.
+Exit code: 2
+
+==================================
+PENGUJIAN TAMBAHAN - PARAMETER KURANG
+==================================
+Perintah:
+bash scripts/validasi.sh ~/data-backup
+
+Hasil:
+Parameter harus terdiri dari sumber dan tujuan.
+Exit code: 1
+
+==================================
+KESIMPULAN
+==================================
+Seluruh lima skenario pengujian telah dilakukan.
+Exit status yang diperoleh sesuai dengan ketentuan.
