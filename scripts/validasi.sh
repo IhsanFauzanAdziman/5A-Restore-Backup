@@ -12,7 +12,7 @@ mkdir -p "$(dirname "$LOG_FILE")"
 echo "$(date '+%F %T') [$1] $2" | tee -a "$LOG_FILE" >&2
 }
 
-# Mememriksa jumlah parameter
+# Memeriksa jumlah parameter
 if [ "$#" -ne 2 ]; then
 log ERROR "Parameter harus terdiri dari sumber dan tujuan."
 echo "Pemakaian: $0 <sumber> <tujuan>" >&2
@@ -22,9 +22,9 @@ fi
 SUMBER="$1"
 TUJUAN="$2"
 
-# Mememriksa keberadaan dan akses sumber
+# Memeriksa keberadaan dan akses sumber
 if [ ! -d "$SUMBER" ] || [ ! -r "$SUMBER" ]; then
-log ERROR "Sumber tidak tersediaatau tidak terbaca: $SUMBER"
+log ERROR "Sumber tidak tersedia atau tidak terbaca: $SUMBER"
 exit 2
 fi
 
@@ -34,7 +34,7 @@ log ERROR "Direktori sumber kosong: $SUMBER"
 exit 3
 fi
 
-# Memerikssa direktori root
+# Memeriksa direktori root
 SUMBER_ABS=$(realpath -e -- "$SUMBER") || exit 2
 
 if [ "$SUMBER_ABS" = "/" ]; then
