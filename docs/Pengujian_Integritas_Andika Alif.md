@@ -33,9 +33,9 @@
   - **Bukti:** Tangkapan layar eksekusi terminal dan isi `verifikasi.log` tersimpan di folder `evidence/`.
 
 ## Pemetaan Konsep Teori SO
-1. **Sistem Berkas dan Integritas Data, yaitu ** Menjamin keutuhan berkas pada level *filesystem* melalui verifikasi *cryptographic hash* (SHA-256) untuk mendeteksi perubahan bit atau korupsi data sebelum operasi penulisan ulang (*restore*) dilakukan.
-2. **Manajemen Proses dan *Exit Status*, dengan ** memanfaatkan mekanisme *exit code* (`0` untuk sukses, `4` untuk gagal integritas) sebagai standar komunikasi antar-proses (*inter-process signaling*) agar skrip orkestrator kelompok dapat mengambil keputusan secara otomatis.
-3. **Sistem I/O dan *Logging*, dengan ** mengelola aliran *standard output* (`stdout`) dan pengalihan (*redirection*) ke berkas `verifikasi.log` untuk kebutuhan pencatatan aktivitas dan penelusuran kesalahan (*troubleshooting*).
+1. **Sistem Berkas dan Integritas Data**, yaitu Menjamin keutuhan berkas pada level *filesystem* melalui verifikasi *cryptographic hash* (SHA-256) untuk mendeteksi perubahan bit atau korupsi data sebelum operasi penulisan ulang (*restore*) dilakukan.
+2. **Manajemen Proses dan *Exit Status***, dengan memanfaatkan mekanisme *exit code* (`0` untuk sukses, `4` untuk gagal integritas) sebagai standar komunikasi antar-proses (*inter-process signaling*) agar skrip orkestrator kelompok dapat mengambil keputusan secara otomatis.
+3. **Sistem I/O dan *Logging***, dengan mengelola aliran *standard output* (`stdout`) dan pengalihan (*redirection*) ke berkas `verifikasi.log` untuk kebutuhan pencatatan aktivitas dan penelusuran kesalahan (*troubleshooting*).
 
 ## Refleksi Individu
 - Tantangan terbesar dan cara mengatasinya: Memastikan skrip dapat menangani skenario arsip rusak secara konsisten dan mengeluarkan *exit status* spesifik (`4`) tanpa menghentikan pencatatan log. Hal ini diatasi dengan memisahkan pengecekan hasil `sha256sum`, mencatat status ke `verifikasi.log` terlebih dahulu, lalu mengeksekusi perintah `exit 4`.
