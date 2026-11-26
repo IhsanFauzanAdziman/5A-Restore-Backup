@@ -1,0 +1,61 @@
+BUKTI PENGUJIAN ANGGOTA 3 (VERIFIKASI INTEGRITAS & CHECKSUM SHA-256)
+Nama         : Andika Alif Rachmanto
+NIM          : 2510512002
+Kelas        : Kelas A
+Kelompok     : 1
+Fitur        : Verifikasi Integritas Arsip Menggunakan Checksum SHA-256
+Host / User  : AndikaAlifRachmanto-2510512002-KelasA / vboxuser
+Direktori    : ~/proyek_5a
+Waktu Uji    : 2026-11-26 12:55:13
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. PERSIAPAN DATA DUMMY & CHECKSUM REFERENSI
+
+Perintah:
+tar -czf tests/arsip_dummy.tar.gz tests/data_dummy.txt
+sha256sum tests/arsip_dummy.tar.gz > tests/arsip_dummy.sha256
+cp tests/arsip_dummy.tar.gz tests/arsip_rusak.tar.gz
+echo "teks penyusup yang mengubah isi arsip" >> tests/arsip_rusak.tar.gz
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. PENGUJIAN 1, SKENARIO POSITIF (ARSIP ASLI)
+
+Perintah:
+./scripts/verifikasi.sh tests/arsip_dummy.tar.gz tests/arsip_dummy.sha256
+
+Output Terminal:
+==================================================
+Memeriksa Arsip   : tests/arsip_dummy.tar.gz
+Checksum Tercatat : 543f3b9f283203e6b3e81d4eb443cc3e5868428b70a4e5ed64b3b2dc200baff6
+Checksum Aktual   : 543f3b9f283203e6b3e81d4eb443cc3e5868428b70a4e5ed64b3b2dc200baff6
+==================================================
+[SUKSES] Integritas terverifikasi. Arsip asli dan tidak berubah.
+Exit code: 0
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. PENGUJIAN 2, SKENARIO NEGATIF (ARSIP RUSAK / DIMODIFIKASI)
+
+Perintah:
+./scripts/verifikasi.sh tests/arsip_rusak.tar.gz tests/arsip_dummy.sha256
+
+Output Terminal:
+==================================================
+Memeriksa Arsip   : tests/arsip_rusak.tar.gz
+Checksum Tercatat : 543f3b9f283203e6b3e81d4eb443cc3e5868428b70a4e5ed64b3b2dc200baff6
+Checksum Aktual   : dbf8b9ce9a6ae04e9fcccd7f532e533e2943bd7ab469f1790a6bc58b3b9fa905
+==================================================
+[GAGAL] Peringatan! Checksum berbeda. Arsip telah diubah atau rusak!
+Exit code: 1 (atau 4 sesuai definisi exit status verifikasi.sh)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. ISI LOG VERIFIKASI (cat verifikasi.log)
+
+[2026-11-26 12:54:28] [SUKSES] Arsip 'tests/arsip_dummy.tar.gz' lolos verifikasi (Hash cocok).
+[2026-11-26 12:55:13] [GAGAL] Arsip 'tests/arsip_rusak.tar.gz' gagal verifikasi (Hash tidak cocok).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. KESIMPULAN PENGUJIAN
+
+1. Pada skenario positif, nilai SHA-256 arsip asli identik dengan referensi sehingga verifikasi dinyatakan [SUKSES].
+2. Pada skenario negatif, perubahan isi arsip langsung mengubah hash SHA-256 sehingga sistem mendeteksi kerusakan dan membatalkan proses lanjutan dengan status [GAGAL].
+3. Seluruh riwayat pengujian tercatat otomatis ke dalam verifikasi.log beserta stempel waktu.
