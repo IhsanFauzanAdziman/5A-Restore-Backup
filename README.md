@@ -47,7 +47,7 @@ Seluruh modul dirancang sebagai rantai kerja berurutan (*pipeline*) dengan valid
        │ Pulih Identik (Exit 0)
        ▼
 (5) Lock (flock), Log, & Laporan ──► Audit via Docker Bind Mount Read-Only
-
+```
 --------------------
 ## 4. Matriks Skenario Pengujian
 | ID | Penanggung Jawab | Skenario Positif | Skenario Negatif |
