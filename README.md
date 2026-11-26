@@ -1,8 +1,8 @@
 # 5A-Restore-Backup
 
-**Project 5A, Sistem Otomasi Backup dan Pemulihan Data Linux**
-**Kelas A, Kelompok 1**
-Mata Kuliah Sistem Operasi & Praktikum Sistem Operasi
+**Project 5A, Sistem Otomasi Backup dan Pemulihan Data Linux**  
+**Kelas A, Kelompok 1**  
+Mata Kuliah Sistem Operasi & Praktikum Sistem Operasi  
 Program Studi S1 Sistem Informasi, Fakultas Ilmu Komputer, UPN "Veteran" Jakarta  
 Dosen Pengampu: **Boby Suryo Prakoso S.T., M.Kom.**
 
