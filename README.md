@@ -1,4 +1,4 @@
-# 5A-Restore-Backup
+# Proyek 5A, Sistem Otomasi Backup dan Pemulihan Data Linux oleh Kelompok 1
 
 **Project 5A, Sistem Otomasi Backup dan Pemulihan Data Linux**  
 **Kelas A, Kelompok 1**  
