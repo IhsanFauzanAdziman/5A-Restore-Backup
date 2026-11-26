@@ -6,8 +6,7 @@
 - Topik / Paket: Paket 5A - Backup & Restore Otomatis
 - Peran & Sub-tugas: Anggota 3 - Verifikasi Integritas Arsip (Checksum SHA-256)
 - Repository Utama Kelompok: https://github.com/IhsanFauzanAdziman/5A-Restore-Backup
-- Repository Fork Pribadi: https://github.com/[username-github-kamu]/5A-Restore-Backup
-- Commit Terakhir (SHA): ....
+- Repository Fork Pribadi: https://github.com/dikalifnew/5A-Restore-Backup
 
 ## Ringkasan Kontribusi Teknis
 - Daftar berkas yang saya buat/ubah yaitu:
@@ -39,4 +38,4 @@
 
 ## Refleksi Individu
 - Tantangan terbesar dan cara mengatasinya: Memastikan skrip dapat menangani skenario arsip rusak secara konsisten dan mengeluarkan *exit status* spesifik (`4`) tanpa menghentikan pencatatan log. Hal ini diatasi dengan memisahkan pengecekan hasil `sha256sum`, mencatat status ke `verifikasi.log` terlebih dahulu, lalu mengeksekusi perintah `exit 4`.
-- Pembelajaran utama yang diperoleh: Memahami pentingnya validasi integritas data sebelum proses pemulihan (*restore*) pada administrasi sistem Linux, serta bagaimana *exit code* dan *logging* berperan penting dalam menghubungkan modul-modul *shell script* secara andal dalam satu alur kerja kelompok.
+- Pembelajaran utama yang diperoleh adalah memahami pentingnya validasi integritas data sebelum proses pemulihan (*restore*) pada administrasi sistem Linux, serta bagaimana *exit code* dan *logging* berperan penting dalam menghubungkan modul-modul *shell script* secara andal dalam satu alur kerja kelompok.
