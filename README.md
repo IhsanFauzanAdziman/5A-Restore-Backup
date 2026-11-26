@@ -6,8 +6,6 @@ Mata Kuliah Sistem Operasi & Praktikum Sistem Operasi
 Program Studi S1 Sistem Informasi, Fakultas Ilmu Komputer, UPN "Veteran" Jakarta  
 Dosen Pengampu: **Boby Suryo Prakoso S.T., M.Kom.**
 
-Proyek ini dikerjakan secara berkelompok oleh 5 anggota dengan pembagian modul yang terintegrasi secara berurutan (*pipeline*).
-
 --------------------
 ## 1. Deskripsi Proyek
 Project 5A, Sistem Otomasi Backup dan Pemulihan Data Linux merupakan sebuah unit kerja yang membutuhkan pencadangan dokumen dan dapat diperiksa integritasnya serta dipulihkan ketika data hilang atau berubah. Proyek ini memiliki beberapa kumpulan skrip *Bash* untuk mengotomatisasi pencadangan direktori pada lingkungan Linux dengan alur: validasi direktori sumber dan parameter, pembuatan arsip terkompresi `.tar.gz` berstempel waktu (*timestamp*), pembuatan serta verifikasi integritas menggunakan *checksum* SHA-256, pengujian pemulihan (*restore*) ke direktori uji, serta penguncian proses simultan menggunakan `flock` dan pencatatan *log*. Container Docker juga digunakan dengan *bind mount read-only* (`:ro`) untuk membuktikan isolasi akses *baca-saja* atau *read-only* terhadap laporan dan berkas cadangan. Terdapat beberapa fitur utama didalamnya, diantaranya:
@@ -15,6 +13,8 @@ Project 5A, Sistem Otomasi Backup dan Pemulihan Data Linux merupakan sebuah unit
 2. **Verifikasi Integritas Data**, dimana pemeriksaan keutuhan berkas cadangan menggunakan `sha256sum` (`scripts/verifikasi.sh`) sebelum proses pemulihan dijalankan.
 3. **Sinkronisasi & Proteksi Sistem**, dimana penguncian proses (`flock`) dilakukan untuk mencegah eksekusi ganda (*race condition*), pembatasan izin akses berkas (*permission*), serta pengamatan beban kerja pada dua ukuran beban uji.
 4. **Sinkronisasi, *Logging*, & Audit Docker**, dimana *backup* utama dilakukan dengan penguncian proses (`flock`) untuk mencegah *race condition*, pencatatan *log*, serta pengujian isolasi akses baca-saja melalui Docker *bind mount read-only*.
+
+Proyek ini dikerjakan secara berkelompok oleh Kelompok 1 yang beranggotakan 5 orang dengan pembagian secara berurutan sesuai yang telah dibagikan. Setiap anggota bertanggung jawab atas pekerjaan masing-masing sesuai pada tabel anggota dibawah.
 
 --------------------
 ## 2. Anggota kelompok & Matriks pembagian tugas
@@ -28,7 +28,7 @@ Project 5A, Sistem Otomasi Backup dan Pemulihan Data Linux merupakan sebuah unit
 
 --------------------
 ## 3. Alur Arsitektur Sistem
-Seluruh modul dirancang sebagai rantai kerja berurutan (*pipeline*) dengan validasi *exit status* di setiap tahap:
+Seluruh modul dirancang sebagai rantai kerja berurutan dengan validasi *exit status* disetiap tahap seperti berikut:
 
 ```text
 [Direktori Sumber]
