@@ -42,7 +42,7 @@ Sebagai Anggota 2, tanggung jawab yang dikerjakan meliputi:
 
 Skrip yang digunakan adalah:
 
-`./scripts/buat_arsip.sh test output`
+`ARSIP=$(./scripts/buat_arsip.sh tests output)`
 
 Program menerima dua parameter, yaitu direktori sumber yang akan dicadangkan dan direktori tujuan tempat arsip disimpan.
 
@@ -66,8 +66,10 @@ chmod +x scripts/buat_arsip.sh
 **Perintah pengujian:**
 
 ```bash
-./scripts/buat_arsip.sh tests output
-echo $?
+ARSIP=$(./scripts/buat_arsip.sh tests output)
+STATUS=$?
+echo "Status: $STATUS"
+echo "Arsip: $ARSIP"
 ls -lh output/
 ```
 
@@ -95,8 +97,8 @@ sha256sum -c "$ARSIP.sha256"
 **Persiapan:**
 
 ```bash
-mkdir -p readonly
-chmod 555 readonly
+mkdir -p output-readonly
+chmod 555 output-readonly
 ```
 
 Pengujian dilakukan menggunakan akun pengguna biasa (bukan root) agar pembatasan permission dapat diuji dengan tepat.
@@ -104,8 +106,8 @@ Pengujian dilakukan menggunakan akun pengguna biasa (bukan root) agar pembatasan
 **Perintah pengujian:**
 
 ```bash
-./scripts/buat_arsip.sh dataSumber readonly
-echo $?
+./scripts/buat_arsip.sh tests output-readonly
+echo "Status: $?"
 ```
 
 **Hasil yang diharapkan:**
@@ -120,7 +122,7 @@ echo $?
 
 Setelah pengujian:
 ```bash
-chmod 755 readonly
+chmod 755 output-readonly
 ```
 
 ## 6. Analisis Hasil Pengujian
