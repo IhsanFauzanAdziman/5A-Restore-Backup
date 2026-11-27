@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# =======================================================================================
-# Nama Script : verifikasi.sh
-# Deskripsi   : Verifikasi integritas berkas arsip menggunakan SHA-256
-# Proyek      : 5A - Sistem Otomasi Backup dan Pemulihan Data Linux (Bagian 3) Kelompok 1
-# =======================================================================================
+# verifikasi.sh "Verifikasi integritas berkas arsip menggunakan SHA-256"
+# Penanggung jawab : Andika Alif Rachmanto
+# Pemakaian        : ./scripts/verifikasi.sh <path_file_arsip> <path_file_checksum>
+# Exit status      : 0 sukses
+#                    1 parameter kurang
+#                    2 berkas arsip atau checksum invalid
+#                    3 dependensi perintah tidak tersedia
+#                    4 checksum tidak cocok / arsip rusak
 
 # 1. Deklarasi Variabel
 ARSIP="$1"
