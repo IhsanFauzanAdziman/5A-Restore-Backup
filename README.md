@@ -21,7 +21,7 @@ Proyek ini dikerjakan secara berkelompok oleh Kelompok 1 yang beranggotakan 5 or
 | Anggota | Nama | NIM | Komponen / Tanggung Jawab | Skrip | Dokumentasi & Bukti |
 | :---: | :--- | :---: | :--- | :--- | :--- |
 | **1** | Ezra Sianturi | `2510512032` | Validasi sumber, tujuan, izin akses, dan parameter | [`scripts/validasi.sh`](scripts/validasi.sh) | [Laporan Uji](docs/Pengujian_Validasi_Ezra.md) · [Evidence](evidence/Bagian_1_Validasi_Ezra.txt) |
-| **2** | Ihsan Fauzan Adziman | `2510512028` | Pembuatan arsip `.tar.gz` dan pembangkitan *checksum* SHA-256 | [`scripts/buat_arsip.sh`](scripts/buat_arsip.sh) | [Folder Docs](docs/) · [Folder Evidence](evidence/) |
+| **2** | Ihsan Fauzan Adziman | `2510512028` | Pembuatan arsip `.tar.gz` dan pembangkitan *checksum* SHA-256 | [`scripts/buat_arsip.sh`](scripts/buat_arsip.sh) | [Laporan Uji](docs/Pengujian_Arsip%20dan%20Checksum_Ihsan.md) · [Evidence](/evidence/Bagian_2_Arsip%20dan%20Checksum_Ihsan.md) |
 | **3** | Andika Alif Rachmanto | `2510512002` | Verifikasi integritas data dan validasi kecocokan *checksum* SHA-256 | [`scripts/verifikasi.sh`](scripts/verifikasi.sh) | [Laporan Uji](docs/Pengujian_Integritas_Andika%20Alif) · [Evidence](evidence/) |
 | **4** | Joan Azhim Satyaguna | `2510512026` | Pemulihan data (*restore*) otomatis ke direktori uji | [`scripts/restore.sh`](scripts/restore.sh) | [Laporan Uji](docs/Pengujian_Restore_Joan.md) · [Evidence](evidence/Bagian_4_Restore_Joan) |
 | **5** | Rafi Rei Riordan | `2410512204` | Orkestrasi `backup.sh`, *lock* (`flock`), *logging*, dan aktivitas Docker | [`scripts/backup.sh`](scripts/backup.sh) | [Laporan Uji](docs/Pengujian_Rei.md) · [Evidence](evidence/Bagian_5_Rei) |
@@ -177,7 +177,7 @@ sha256sum dataBackup/*.tar.gz
 | No. | Hasil Positif | Hasil Negatif | Status | Bukti |
 | :---: | :--- | :--- | :---: | :---: |
 | **1** | Parameter dan izin direktori tervalidasi.<br>`Exit 0`. | Validasi gagal dan proses dihentikan dengan pesan *error*.<br>`Exit != 0`. | ✅ Lulus | [Log](evidence/Bagian_1_Validasi_Ezra.txt) |
-| **2** | Arsip `.tar.gz` berstempel waktu dan `.sha256` terbentuk utuh.<br>`Exit 0`. | Pembuatan arsip ditolak tanpa menghasilkan arsip korup.<br>`Exit != 0`. | ✅ Lulus | [Evidence](evidence/) |
+| **2** | Arsip `.tar.gz` berstempel waktu dan `.sha256` terbentuk utuh.<br>`Exit 0`. | Pembuatan arsip ditolak tanpa menghasilkan arsip korup.<br>`Exit != 0`. | ✅ Lulus | [Evidence](evidence/Bagian_2_Arsip%20dan%20Checksum_Ihsan.md) |
 | **3** | *Checksum* SHA-256 cocok (`HASIL: LULUS`).<br>`Exit 0`. | *Checksum* berbeda terdeteksi (`HASIL: GAGAL`), *restore* dibatalkan.<br>`Exit 4`. | ✅ Lulus | [Log](evidence/Bagian%203_Verifikasi%20Integritas_Andika.txt) |
 | **4** | Berkas terekstrak ke direktori uji dan isi identik dengan sumber.<br>`Exit 0`. | Ekstraksi ditolak sebelum berjalan karena arsip tidak valid.<br>`Exit != 0`. | ✅ Lulus | [Log](evidence/Bagian_4_Restore_Joan) |
 | **5** | *Lock* `flock` diperoleh, *log* tercatat, kontainer membaca berkas.<br>`Exit 0`. | Eksekusi ganda ditolak `flock`; penulisan Docker ditolak (`Read-only file system`). | ✅ Lulus | [Log](evidence/Bagian_5_Rei) |
