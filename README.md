@@ -178,7 +178,7 @@ sha256sum dataBackup/*.tar.gz
 | :---: | :--- | :--- | :---: | :---: |
 | **1** | Parameter dan izin direktori tervalidasi.<br>`Exit 0`. | Validasi gagal dan proses dihentikan dengan pesan *error*.<br>`Exit != 0`. | ✅ Lulus | [Log](evidence/Bagian_1_Validasi_Ezra.txt) |
 | **2** | Arsip `.tar.gz` berstempel waktu dan `.sha256` terbentuk utuh.<br>`Exit 0`. | Pembuatan arsip ditolak tanpa menghasilkan arsip korup.<br>`Exit != 0`. | ✅ Lulus | [Evidence](evidence/Bagian_2_Arsip%20dan%20Checksum_Ihsan.md) |
-| **3** | *Checksum* SHA-256 cocok (`HASIL: LULUS`).<br>`Exit 0`. | *Checksum* berbeda terdeteksi (`HASIL: GAGAL`), *restore* dibatalkan.<br>`Exit 4`. | ✅ Lulus | [Log](evidence/Bagian%203_Verifikasi%20Integritas_Andika.txt) |
+| **3** | *Checksum* SHA-256 cocok (`HASIL: LULUS`).<br>`Exit 0`. | *Checksum* berbeda terdeteksi (`HASIL: GAGAL`), *restore* dibatalkan.<br>`Exit 4`. | ✅ Lulus | [Evidence](evidence/Bagian%203_Verifikasi%20Integritas_Andika.txt) |
 | **4** | Berkas terekstrak ke direktori uji dan isi identik dengan sumber.<br>`Exit 0`. | Ekstraksi ditolak sebelum berjalan karena arsip tidak valid.<br>`Exit != 0`. | ✅ Lulus | [Log](evidence/Bagian_4_Restore_Joan) |
 | **5** | *Lock* `flock` diperoleh, *log* tercatat, kontainer membaca berkas.<br>`Exit 0`. | Eksekusi ganda ditolak `flock`; penulisan Docker ditolak (`Read-only file system`). | ✅ Lulus | [Log](evidence/Bagian_5_Rei) |
 
