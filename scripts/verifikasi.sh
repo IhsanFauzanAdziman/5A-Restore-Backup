@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 # verifikasi.sh "Verifikasi integritas berkas arsip menggunakan SHA-256"
 # Penanggung jawab : Andika Alif Rachmanto
 # Pemakaian        : ./scripts/verifikasi.sh <path_file_arsip> <path_file_checksum>
