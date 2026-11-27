@@ -162,16 +162,8 @@ echo $?
 sha256sum dataBackup/*.tar.gz
 ```
 
-## 6. Pembersihan Lingkungan Uji & Catatan
-Setelah pengujian selesai, jalankan perintah berikut untuk mengembalikan lingkungan uji ke kondisi semula:
-
-```bash
-chmod 755 readonly
-rm -rf dataBackup/*.tar.gz dataBackup/*.sha256 dataUji/*
-rm -f tests/arsip_dummy.tar.gz tests/arsip_dummy.sha256 tests/arsip_rusak.tar.gz
-```  
 --------------------
-## 7. Matriks Skenario Pengujian
+## 6. Matriks Skenario Pengujian
 | No. | Penanggung Jawab | Skenario Positif | Skenario Negatif |
 | :---: | :--- | :--- | :--- |
 | **1** | Anggota 1 (Ezra) | Menjalankan `validasi.sh` dengan parameter lengkap dan direktori sumber yang valid serta dapat dibaca. | Menjalankan `validasi.sh` dengan parameter kosong, direktori sumber tidak ditemukan, atau tujuan *read-only*. |
@@ -181,7 +173,7 @@ rm -f tests/arsip_dummy.tar.gz tests/arsip_dummy.sha256 tests/arsip_rusak.tar.gz
 | **5** | Anggota 5 (Rei) | Menjalankan orkestrasi `backup.sh` secara tunggal dan membaca direktori *backup* dari kontainer Docker *mount* `:ro`. | Menjalankan dua proses `backup.sh` secara bersamaan dan mencoba menulis berkas ke *mount* `:ro` di dalam Docker. |
 
 --------------------
-## 8. Hasil Pengujian
+## 7. Hasil Pengujian
 | No. | Hasil Positif | Hasil Negatif | Status | Bukti |
 | :---: | :--- | :--- | :---: | :---: |
 | **1** | Parameter dan izin direktori tervalidasi.<br>`Exit 0`. | Validasi gagal dan proses dihentikan dengan pesan *error*.<br>`Exit != 0`. | ✅ Lulus | [Log](evidence/Bagian_1_Validasi_Ezra.txt) |
@@ -198,6 +190,6 @@ Implementasi **Project 5A: Sistem Otomasi Backup dan Pemulihan Data Linux** berh
 3. **Sinkronisasi, *Logging*, & Isolasi Docker (`backup.sh`)**, dimana penguncian proses menggunakan `flock` efektif mencegah eksekusi ganda (*race condition*), seluruh aktivitas tercatat kronologis di dalam *log*, dan pengujian kontainer Docker dengan *bind mount read-only* (`:ro`) membuktikan berkas cadangan dapat dibaca tanpa risiko modifikasi pada sistem *host*.
 
 --------------------
-## Catatan:
+## Catatan
 * Seluruh data yang digunakan pada pengujian proyek ini merupakan **data *dummy*** dan tidak memuat kredensial maupun informasi sensitif.
-* Dokumentasi portofolio individu masing-masing anggota (`PORTOFOLIO.md`) tersimpan pada repository *fork* pribadi tiap anggota kelompok.
+* Dokumentasi portofolio individu masing-masing anggota berupa `PORTOFOLIO.md` tersimpan pada repository *fork* pribadi pada setiap anggota kelompok.
